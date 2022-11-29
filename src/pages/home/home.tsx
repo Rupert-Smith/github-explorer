@@ -1,17 +1,53 @@
 import styles from "./_home.module.scss";
 import { RoundedCard } from "common/rounded-card/rounded-card";
 import { useState } from "react";
-import { API_LINK } from "store/constants";
+import { API_LINK, TOTAL_RESULTS_PER_PAGE } from "store/constants";
+import { Pagination } from "@mui/material";
 
 function Home() {
-  const [searchResults, setSearchResults] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
+  let paginationResults: any = searchResults;
+  const [searchMade, setSearchMade] = useState(false);
+  const [page, setPage] = useState(1);
+
+  if (paginationResults.length > TOTAL_RESULTS_PER_PAGE) {
+    const begin = (page - 1) * TOTAL_RESULTS_PER_PAGE;
+    const end = begin + TOTAL_RESULTS_PER_PAGE;
+    paginationResults = searchResults.slice(begin, end);
+  }
+
+  const displayResults = paginationResults.length !== 0;
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
 
   return (
     <div className={styles["home-main-container"]}>
-      <div className={styles["content"]}>
+      <div className={`${styles["content"]}`}>
         <h1>Github Explorer</h1>
-        <SearchBar setSearchResults={setSearchResults} />
-        <Results searchResults={searchResults} />
+        <SearchBar
+          setSearchMade={setSearchMade}
+          setSearchResults={setSearchResults}
+        />
+        {displayResults && (
+          <>
+            <Results searchResults={paginationResults} />
+            <Pagination
+              className={"pagination"}
+              page={page}
+              count={Math.ceil(searchResults.length / TOTAL_RESULTS_PER_PAGE)}
+              shape="rounded"
+              variant="outlined"
+              onChange={(_, newPage) => {
+                handlePageChange(newPage);
+              }}
+            />
+          </>
+        )}
+        {searchMade && !displayResults && (
+          <div className={styles["no-results"]}>No repositories found.</div>
+        )}
       </div>
     </div>
   );
@@ -19,9 +55,10 @@ function Home() {
 
 type SearchBarTypes = {
   setSearchResults: Function;
+  setSearchMade: Function;
 };
 
-function SearchBar({ setSearchResults }: SearchBarTypes) {
+function SearchBar({ setSearchResults, setSearchMade }: SearchBarTypes) {
   const [searchText, setSearchText] = useState("");
 
   async function handleSearch() {
@@ -46,8 +83,8 @@ function SearchBar({ setSearchResults }: SearchBarTypes) {
           });
         });
       }
+      setSearchMade(true);
       setSearchResults(results);
-      console.log(results);
     } catch (error) {
       console.log(error);
     }
@@ -85,8 +122,6 @@ type ResultsTypes = {
 };
 
 function Results({ searchResults }: ResultsTypes) {
-  console.log(searchResults);
-
   return (
     <div className={styles["results-container"]}>
       {searchResults?.map((repository: any) => {

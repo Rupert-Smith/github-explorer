@@ -15,14 +15,19 @@ h1 {
 }
 
 .content {
-  margin-top: 8em;
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
-  gap: 3em;
   align-items: center;
 }
 
+.no-results {
+  position: absolute;
+  margin-top: 16em;
+}
+
 .search-bar {
+  margin-top: 3em;
   height: 3em;
   border-radius: $borderRadius-default;
   display: flex;
@@ -72,7 +77,8 @@ h1 {
 }
 
 .results-container {
-  margin-top: 1em;
+  height: 30em;
+  margin-top: 3em;
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -93,14 +99,16 @@ h1 {
   background-color: $color-secondary-whiteHover;
 }
 
+$image-dimension: 1.5em;
+
 .repository-image {
   border-radius: $borderRadius-default;
-  width: 2em;
-  height: 2em;
+  width: $image-dimension;
+  height: $image-dimension;
   img {
     object-fit: cover;
-    width: 2em;
-    height: 2em;
+    width: $image-dimension;
+    height: $image-dimension;
   }
 }
 
