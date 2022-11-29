@@ -1,0 +1,124 @@
+// ----------- COLORS -----------
+
+$color-primary-softBlue: #f3f2f8;
+$color-primary-lightGreen: #73bc64;
+$color-primary-lightGreen-hover: #67ac5a;
+$color-secondary-lightGrey: #7a7a7a;
+$color-secondary-whiteHover: #bebfc1;
+
+// ----------- FONT SIZE -----------
+
+$fontSize-100: 16px;
+$fontSize-200: 18px;
+$fontSize-300: 24px;
+$fontSize-400: 32px;
+$fontSize-500: 48px;
+$fontSize-600: 72px;
+
+// ----------- BORDER RADIUS -----------
+
+$borderRadius-circle: 2em;
+$borderRadius-default: 2em;
+
+// ----------- PADDING -----------
+
+$padding-card-default: 4em;
+
+//-------------------------------------
+$color-primary-chocolateBrown: #a76058;
+$color-primary-chocolateBrown-light: #fbe8e6;
+$color-primary-strawberryRed: #e2406d;
+$color-primary-cherryBlossomPink: #f9abd5;
+$color-primary-cherryBlossomPink-hover: #efa0ca;
+$color-primary-bubblegumPink: #ef8cc1;
+$color-primary-bubblegumPink-hover: #de73ac;
+$color-primary-babyPink: #f4c7e4;
+$color-primary-babyPink-light: #fefafd;
+$color-primary-babyPink-hover: #f9afdf;
+// $color-primary-sunshineYellow: #f9d36d; // OLD
+$color-primary-sunshineYellow: #fde27f;
+$color-primary-sunshineYellow-light: #fffcf3;
+$color-primary-sunshineYellow-superLight: #fffcf3;
+// $color-primary-beachYellow: #fbe2a5; //OLD
+$color-primary-beachYellow: #fbe8a5;
+$color-primary-beachYellow-hover: #ffe788;
+$color-primary-creamWhite: #fdf6f2;
+$color-primary-nightBlack-light: #737373;
+$color-primary-nightBlack: #484848;
+$color-primary-rainCloudGrey: #ffedf8;
+$color-primary-dolphinGrey: #e2e0df;
+$color-primary-cloudWhite: #f8f5f3;
+
+$color-secondary-creamWhiteDark: #fcf3d1;
+$color-secondary-marshmellowPink: #fce1f2;
+
+$color-secondary-rosePink-dark: #be6875;
+$color-secondary-rosePink: #eda9b4;
+$color-secondary-rosePink-light: #f8e4e7;
+$color-secondary-skyBlue: #cfdff7;
+$color-secondary-skyBlue-hover: #aecdfc;
+
+$color-secondary-fieldGreen: #95bd3a;
+
+$color-border-light: rgb(177, 177, 177);
+$color-soft-white: rgb(247, 247, 247);
+
+$color-default-hover: $color-primary-bubblegumPink;
+
+// for use in react components - inline styles
+
+:export {
+  creamWhite: $color-primary-creamWhite;
+  nightBlack: $color-primary-nightBlack;
+  cherryBlossomPink: $color-primary-cherryBlossomPink;
+  sunshineYellow: $color-primary-sunshineYellow;
+  rosePink: $color-secondary-rosePink;
+}
+
+// ----------- FONT SIZE -----------
+
+$fontSize-300-small: 0.8rem;
+$fontSize-500-medium: 1rem;
+$fontSize-550-medium-title: 1.1rem;
+$fontSize-600-big: 1.2rem;
+$fontSize-900-title: 1.35rem;
+
+// ----------- PADDING / MARGINS -----------
+
+$padding-inner-window: 2em;
+$padding-small-card: 0.2em 0.8em;
+
+// ----------- TRANSITIONS -----------
+
+$transitions-defaultTransition: 0.1s;
+
+// ----------- BUTTON SIZES -----------
+
+$circle-button-default-size: 2.1em;
+$default-button-border-width: 0.1em;
+
+// ----------- LAYOUT DIMENSIONS -----------
+
+$main-layout-spacing: 2em;
+$inner-window-spacing: 1.5em;
+$inner-window-spacing-small: 1em;
+$header-height: 4em;
+$sidebar-width: 3.5em;
+
+:export {
+  sidebarWidth: $sidebar-width;
+}
+
+// ----------- BORDERS -----------
+
+$border-default: 0.5px solid;
+$border-color-default: $color-primary-nightBlack;
+
+// ----------- RESULT CARDS -----------
+
+$recipe-card-padding: 0.8em;
+$gap-result-cards: 1.2em;
+
+// ----------- BOX SHADOW-----------
+
+$default-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
