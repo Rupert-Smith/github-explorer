@@ -3,9 +3,16 @@ import { RoundedCard } from "common/rounded-card/rounded-card";
 import { useState } from "react";
 import { API_LINK, TOTAL_RESULTS_PER_PAGE } from "store/constants";
 import { Pagination } from "@mui/material";
+import { ReactComponent as GithubLogo } from "assets/icons/github.svg";
+import { ReactComponent as FaceThink } from "assets/icons/face-thinking-thin.svg";
+import { ReactComponent as ErrorIcon } from "assets/icons/face-grimace-thin.svg";
+import ReactLoading from "react-loading";
+import variables from "assets/theme/_constants.module.scss";
 
 function Home() {
   const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   let paginationResults: any = searchResults;
   const [searchMade, setSearchMade] = useState(false);
   const [page, setPage] = useState(1);
@@ -25,11 +32,27 @@ function Home() {
   return (
     <div className={styles["home-main-container"]}>
       <div className={`${styles["content"]}`}>
-        <h1>Github Explorer</h1>
+        <div className={styles["heading"]}>
+          <GithubLogo className={styles["github-logo"]} />
+          <h1>Github Explorer</h1>
+        </div>
         <SearchBar
+          setError={setError}
+          setLoading={setLoading}
           setSearchMade={setSearchMade}
           setSearchResults={setSearchResults}
         />
+
+        {loading && (
+          <ReactLoading
+            className={styles["loading-spinner"]}
+            type={"spin"}
+            color={variables.softBlack}
+            height={50}
+            width={50}
+          />
+        )}
+
         {displayResults && (
           <>
             <Results searchResults={paginationResults} />
@@ -46,7 +69,14 @@ function Home() {
           </>
         )}
         {searchMade && !displayResults && (
-          <div className={styles["no-results"]}>No repositories found.</div>
+          <div className={`${styles["message"]} ${styles["no-results"]}`}>
+            No repositories found <FaceThink />
+          </div>
+        )}
+        {error && (
+          <div className={`${styles["message"]} ${styles["error"]}`}>
+            Something went wrong, please check your network <ErrorIcon />
+          </div>
         )}
       </div>
     </div>
@@ -56,13 +86,21 @@ function Home() {
 type SearchBarTypes = {
   setSearchResults: Function;
   setSearchMade: Function;
+  setLoading: Function;
+  setError: Function;
 };
 
-function SearchBar({ setSearchResults, setSearchMade }: SearchBarTypes) {
+function SearchBar({
+  setLoading,
+  setSearchResults,
+  setSearchMade,
+  setError,
+}: SearchBarTypes) {
   const [searchText, setSearchText] = useState("");
 
   async function handleSearch() {
     try {
+      setLoading(true);
       const response = await fetch(API_LINK, {
         method: "GET",
         headers: {
@@ -83,9 +121,12 @@ function SearchBar({ setSearchResults, setSearchMade }: SearchBarTypes) {
           });
         });
       }
+      setLoading(false);
       setSearchMade(true);
       setSearchResults(results);
     } catch (error) {
+      setLoading(false);
+      setError(true);
       console.log(error);
     }
   }

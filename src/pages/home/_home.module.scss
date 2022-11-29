@@ -9,9 +9,23 @@
   background-color: $color-primary-softBlue;
 }
 
-h1 {
-  margin: 0em;
-  font-size: $fontSize-600;
+.heading {
+  align-items: center;
+  justify-items: center;
+  display: flex;
+  gap: 1.5em;
+
+  h1 {
+    color: $color-primary-softBlack;
+    margin: 0em;
+    font-size: $fontSize-600;
+  }
+
+  svg {
+    margin-top: -0.3em;
+    width: 4.5em;
+    color: $color-primary-softBlack;
+  }
 }
 
 .content {
@@ -21,15 +35,31 @@ h1 {
   align-items: center;
 }
 
-.no-results {
+.message {
+  display: flex;
+  align-items: center;
   position: absolute;
-  margin-top: 16em;
+  margin-top: 15em;
+  gap: 0.6em;
+  svg {
+    width: 1.5em;
+  }
+}
+
+.error {
+  border-radius: $borderRadius-default;
+  padding: 0.5em 3em;
+  color: $color-secondary-errorRed;
+}
+
+.loading-spinner {
+  margin-top: 5em;
 }
 
 .search-bar {
   margin-top: 3em;
   height: 3em;
-  border-radius: $borderRadius-default;
+  border-radius: $borderRadius-circle;
   display: flex;
 
   input {
@@ -38,8 +68,8 @@ h1 {
     width: 33em;
     height: 2.88em;
     padding-left: $padding-card-default;
-    border-top-left-radius: $borderRadius-default;
-    border-bottom-left-radius: $borderRadius-default;
+    border-top-left-radius: $borderRadius-circle;
+    border-bottom-left-radius: $borderRadius-circle;
     border: none;
   }
 
@@ -66,14 +96,18 @@ h1 {
     box-shadow: none;
     padding: 1em 4em;
     font-size: $fontSize-100;
-    border-top-right-radius: $borderRadius-default;
-    border-bottom-right-radius: $borderRadius-default;
+    border-top-right-radius: $borderRadius-circle;
+    border-bottom-right-radius: $borderRadius-circle;
     @include defaultHoverTransition;
   }
 
   button:hover {
     background-color: $color-primary-lightGreen-hover;
   }
+}
+
+.search-bar:hover {
+  box-shadow: $box-shadow-default;
 }
 
 .results-container {
@@ -86,7 +120,7 @@ h1 {
 
 .results-card {
   @include defaultHoverTransition;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   gap: 2em;
   align-items: center;
 }
@@ -97,12 +131,13 @@ h1 {
 
 .results-card:hover {
   background-color: $color-secondary-whiteHover;
+  box-shadow: $box-shadow-default;
 }
 
 $image-dimension: 1.5em;
 
 .repository-image {
-  border-radius: $borderRadius-default;
+  border-radius: $borderRadius-circle;
   width: $image-dimension;
   height: $image-dimension;
   img {
