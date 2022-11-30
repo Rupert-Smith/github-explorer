@@ -8,6 +8,7 @@ body {
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
   font-family: ProductSansRegular;
+  background-color: #f3f2f8;
 }
 
 code {
@@ -29,11 +30,7 @@ code {
   font-weight: bold;
 }
 
-.pagination {
-  margin-top: 5em;
-}
-
-.pagination .Mui-selected {
+.MUI-pagination .Mui-selected {
   background-color: #25292e !important;
   color: white;
 }

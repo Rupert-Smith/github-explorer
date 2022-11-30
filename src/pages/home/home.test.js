@@ -13,7 +13,9 @@ test("Results component is displayed after user clicks search", async () => {
   const searchButton = screen.getByRole("button", { name: "Search" });
   expect(searchButton).not.toBeDisabled();
   userEvent.click(searchButton);
-  await waitForElementToBeRemoved(() => screen.getByTestId("loading-spinner"));
+  await waitForElementToBeRemoved(() =>
+    screen.queryByTestId("loading-spinner")
+  );
   const results = screen.getByTestId("results");
   expect(results).toBeInTheDocument();
 });

@@ -57,7 +57,7 @@ function Home() {
           <>
             <Results searchResults={paginationResults} />
             <Pagination
-              className={"pagination"}
+              className={`MUI-pagination ${styles["pagination"]}`}
               page={page}
               count={Math.ceil(searchResults.length / TOTAL_RESULTS_PER_PAGE)}
               shape="rounded"
