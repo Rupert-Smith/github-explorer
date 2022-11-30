@@ -57,60 +57,6 @@
   margin-top: 2em;
 }
 
-.search-bar {
-  margin-top: 2.2em;
-  height: 2.7em;
-  border-radius: $borderRadius-circle;
-  display: flex;
-
-  input {
-    height: 100%;
-    font-size: $fontSize-100;
-    width: 33em;
-    height: 2.88em;
-    padding-left: $padding-card-default;
-    border-top-left-radius: $borderRadius-circle;
-    border-bottom-left-radius: $borderRadius-circle;
-    border: none;
-  }
-
-  input::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    font-size: $fontSize-100;
-    opacity: 1; /* Firefox */
-  }
-
-  input:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    font-size: $fontSize-100;
-  }
-
-  input::-ms-input-placeholder {
-    /* Microsoft Edge */
-    font-size: $fontSize-100;
-  }
-
-  button {
-    background-color: $color-primary-lightGreen;
-    color: white;
-    border: none;
-    box-shadow: none;
-    padding: 0em 4em;
-    font-size: $fontSize-100;
-    border-top-right-radius: $borderRadius-circle;
-    border-bottom-right-radius: $borderRadius-circle;
-    @include defaultHoverTransition;
-  }
-
-  button:hover {
-    background-color: $color-primary-lightGreen-hover;
-  }
-}
-
-.search-bar:hover {
-  box-shadow: $box-shadow-default;
-}
-
 .results-container {
   height: 30em;
   margin-top: 3em;
@@ -165,4 +111,58 @@ $image-dimension: 1.5em;
 .repository-description {
   width: 30em;
   color: $color-secondary-lightGrey;
+}
+
+.search-bar {
+  margin-top: 2.2em;
+  height: 2.7em;
+  border-radius: $borderRadius-circle;
+  display: flex;
+
+  input {
+    height: 100%;
+    font-size: $fontSize-100;
+    width: 33em;
+    height: 2.88em;
+    padding-left: $padding-card-default;
+    border-top-left-radius: $borderRadius-circle;
+    border-bottom-left-radius: $borderRadius-circle;
+    border: none;
+  }
+
+  input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: $fontSize-100;
+    opacity: 1; /* Firefox */
+  }
+
+  input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-size: $fontSize-100;
+  }
+
+  input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-size: $fontSize-100;
+  }
+
+  button {
+    background-color: $color-primary-lightGreen;
+    color: white;
+    border: none;
+    box-shadow: none;
+    padding: 0em 4em;
+    font-size: $fontSize-100;
+    border-top-right-radius: $borderRadius-circle;
+    border-bottom-right-radius: $borderRadius-circle;
+    @include defaultHoverTransition;
+  }
+
+  button:hover {
+    background-color: $color-primary-lightGreen-hover;
+  }
+}
+
+.search-bar:hover {
+  box-shadow: $box-shadow-default;
 }

@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
-    "@types/webpack-env": "^1.18.0"
+    "@types/webpack-env": "^1.18.0",
+    "jest-watch-typeahead": "^0.6.5"
   }
 }

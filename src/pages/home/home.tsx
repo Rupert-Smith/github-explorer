@@ -45,6 +45,7 @@ function Home() {
         />
         {loading && (
           <ReactLoading
+            data-testid="loading-spinner"
             className={styles["loading-spinner"]}
             type={"spin"}
             color={variables.softBlack}
@@ -81,6 +82,10 @@ function Home() {
     </div>
   );
 }
+
+type ResultsTypes = {
+  searchResults: TypeRepository[];
+};
 
 type SearchBarTypes = {
   setSearchResults: Function;
@@ -151,19 +156,15 @@ function SearchBar({
           handleSearch();
         }}
       >
-        <div>Search</div>
+        Search
       </button>
     </form>
   );
 }
 
-type ResultsTypes = {
-  searchResults: TypeRepository[];
-};
-
 function Results({ searchResults }: ResultsTypes) {
   return (
-    <div className={styles["results-container"]}>
+    <div data-testid="results" className={styles["results-container"]}>
       {searchResults?.map((repository: TypeRepository) => {
         return (
           <RoundedCard
