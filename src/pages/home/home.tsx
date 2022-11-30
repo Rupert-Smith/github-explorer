@@ -68,12 +68,12 @@ function Home() {
             />
           </>
         )}
-        {searchMade && !displayResults && (
+        {searchMade && !displayResults && !loading && (
           <div className={`${styles["message"]} ${styles["no-results"]}`}>
             No repositories found <FaceThink />
           </div>
         )}
-        {error && (
+        {error && !loading && (
           <div className={`${styles["message"]} ${styles["error"]}`}>
             Something went wrong, please check your network <ErrorIcon />
           </div>
