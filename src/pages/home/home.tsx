@@ -8,12 +8,13 @@ import { ReactComponent as FaceThink } from "assets/icons/face-thinking-thin.svg
 import { ReactComponent as ErrorIcon } from "assets/icons/face-grimace-thin.svg";
 import ReactLoading from "react-loading";
 import variables from "assets/theme/_constants.module.scss";
+import { TypeRepository } from "types/repository";
 
 function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  let paginationResults: any = searchResults;
+  let paginationResults: TypeRepository[] = searchResults;
   const [searchMade, setSearchMade] = useState(false);
   const [page, setPage] = useState(1);
 
@@ -42,7 +43,6 @@ function Home() {
           setSearchMade={setSearchMade}
           setSearchResults={setSearchResults}
         />
-
         {loading && (
           <ReactLoading
             className={styles["loading-spinner"]}
@@ -52,7 +52,6 @@ function Home() {
             width={50}
           />
         )}
-
         {displayResults && (
           <>
             <Results searchResults={paginationResults} />
@@ -113,8 +112,8 @@ function SearchBar({
       let results = responseJson;
 
       if (searchText !== "") {
-        results = results.filter((obj: any) => {
-          return Object.values(obj).some((val: any) => {
+        results = results.filter((obj: TypeRepository) => {
+          return Object.values(obj).some((val) => {
             if (typeof val === "string" && val.includes(searchText)) {
               return true;
             }
@@ -159,13 +158,13 @@ function SearchBar({
 }
 
 type ResultsTypes = {
-  searchResults: any;
+  searchResults: TypeRepository[];
 };
 
 function Results({ searchResults }: ResultsTypes) {
   return (
     <div className={styles["results-container"]}>
-      {searchResults?.map((repository: any) => {
+      {searchResults?.map((repository: TypeRepository) => {
         return (
           <RoundedCard
             key={repository.id}
